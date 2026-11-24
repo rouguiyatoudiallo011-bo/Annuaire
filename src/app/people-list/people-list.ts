@@ -1,11 +1,12 @@
 import { Component, signal, inject } from '@angular/core';
 import { Person } from '../models/types';
 import { PeopleApi } from '../people-api';
-import { JsonPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
 
 
 @Component({
-  imports: [JsonPipe],
+  imports: [RouterLink],
   selector: 'app-people-list',
   styleUrl: './people-list.css',
   templateUrl: './people-list.html',

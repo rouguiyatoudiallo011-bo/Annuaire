@@ -16,6 +16,14 @@ export type Person = {
     name: Name;
     location: location;
     picture: picture;
+    dob: {
+        age: number
+    };
+    phone: string;
+    email: string;
+    id: {
+      value: "string";
+    }
 }
 
 export type PeopleResponse = {

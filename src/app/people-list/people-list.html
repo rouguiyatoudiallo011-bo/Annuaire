@@ -1,9 +1,12 @@
 
 <section>
-
-  <div class="containerPeople">
-    @if(people()){
+      @if (service.loading()) {
+  <p>Chargement du catalogue…</p>
+}
+@else if (people()){ <div  class="containerPeople"  >
+    
       @for(person of people(); track $index){
+        <a [routerLink]="['/personnes', person.id.value]">
         <div class="cardPerson">
           <img [src]="person.picture.large" class="imagePerson">
 
@@ -17,8 +20,16 @@
             <p>{{person.location.city}}</p>
           </div>
         </div>
+           </a>
       }
+   
+   
+       </div>
+       
     }
-  </div>
+  @else {
+    <p>L'annuaire est indisponible. Réessaie dans un instant.</p>
+  }
+ 
 </section>
 

@@ -1,3 +1,19 @@
 import { Routes } from '@angular/router';
+import { PersonDetail } from './person-detail/person-detail';
+import { NotFound } from './not-found/not-found';
+import {PeopleList} from'../app/people-list/people-list';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+     {
+    path: '', component: PeopleList
+  },
+
+    {
+    path: 'personnes/:id', component: PersonDetail
+  },
+ {
+    path: 'annuaire', component: PeopleList
+  },
+     { path: '**', component: NotFound }
+
+];
