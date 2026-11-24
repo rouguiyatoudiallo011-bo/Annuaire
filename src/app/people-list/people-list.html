@@ -1,0 +1,24 @@
+
+<section>
+
+  <div class="containerPeople">
+    @if(people()){
+      @for(person of people(); track $index){
+        <div class="cardPerson">
+          <img [src]="person.picture.large" class="imagePerson">
+
+          <div class="infoPerson">
+            <h3>
+              {{person.name.title}}
+              {{person.name.first}}
+              {{person.name.last}}
+            </h3>
+
+            <p>{{person.location.city}}</p>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</section>
+
