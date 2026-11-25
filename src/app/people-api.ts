@@ -1,7 +1,8 @@
 import { Service, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import {Person, PeopleResponse} from '../app/models/types';
+import {Person ,PeopleResponse} from '../app/models/types';
+
 
 @Service()
 export class PeopleApi {
@@ -9,6 +10,9 @@ export class PeopleApi {
     private readonly http = inject(HttpClient);
     private readonly url = "https://randomuser.me/api/?seed=cda2&results=30&nat=fr";
     loading = signal(true);
+     people = signal<Person[]>([]);
+    
+   
 
     async getAll(): Promise<Person[]> {
         try {
@@ -23,7 +27,17 @@ export class PeopleApi {
          finally {
             this.loading.set(false);
         }
+
+
     }
 
+    
+
+  async add(person: Person): Promise<Person> {
+
+  this.people.update(people => [...people, person]);
+
+  return person;
+}
    
 }

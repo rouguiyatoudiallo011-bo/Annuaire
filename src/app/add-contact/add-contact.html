@@ -1,0 +1,159 @@
+
+<div class="page-container">
+  <div class="contact-card">
+
+    <div class="form-header">
+      <div class="header-icon">👤</div>
+      <h2>Ajouter un contact</h2>
+      <p>Renseignez les informations du nouveau contact.</p>
+    </div>
+
+    <form [formRoot]="personForm">
+
+      <div class="form-grid">
+
+        <!-- Prénom -->
+        <div class="form-group">
+          <label for="firstname">Prénom *</label>
+          <input
+            id="firstname"
+            type="text"
+            placeholder="Ex : Jean"
+            [formField]="personForm.firstname"
+          />
+          @if (personForm.firstname().touched() &&
+               personForm.firstname().invalid()) {
+            <small class="error-text">
+              @for (error of personForm.firstname().errors(); track $index) {
+                {{ error.message }}
+              }
+            </small>
+          }
+        </div>
+
+        <!-- Nom -->
+        <div class="form-group">
+          <label for="lastname">Nom *</label>
+          <input
+            id="lastname"
+            type="text"
+            placeholder="Ex : Dupont"
+            [formField]="personForm.lastname"
+          />
+          @if (personForm.lastname().touched() &&
+               personForm.lastname().invalid()) {
+            <small class="error-text">
+              @for (error of personForm.lastname().errors(); track $index) {
+                {{ error.message }}
+              }
+            </small>
+          }
+        </div>
+
+        <!-- Genre -->
+        <div class="form-group">
+          <label for="gender">Genre</label>
+          <select
+            id="gender"
+            [formField]="personForm.gender"
+          >
+            <option value="">Sélectionner un genre</option>
+            <option value="male">Homme</option>
+            <option value="female">Femme</option>
+          </select>
+        </div>
+
+        <!-- Âge -->
+        <div class="form-group">
+          <label for="age">Âge *</label>
+          <input
+            id="age"
+            type="number"
+            [formField]="personForm.age"
+          />
+          @if (personForm.age().touched() &&
+               personForm.age().invalid()) {
+            <small class="error-text">
+              @for (error of personForm.age().errors(); track $index) {
+                {{ error.message }}
+              }
+            </small>
+          }
+        </div>
+
+        <!-- Email -->
+        <div class="form-group full-width">
+          <label for="email">Adresse email *</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="exemple@email.com"
+            [formField]="personForm.email"
+          />
+          @if (personForm.email().touched() &&
+               personForm.email().invalid()) {
+            <small class="error-text">
+              @for (error of personForm.email().errors(); track $index) {
+                {{ error.message }}
+              }
+            </small>
+          }
+        </div>
+
+        <!-- Téléphone -->
+        <div class="form-group">
+          <label for="phone">Téléphone</label>
+          <input
+            id="phone"
+            type="tel"
+            placeholder="06 12 34 56 78"
+            [formField]="personForm.phone"
+          />
+        </div>
+
+        <!-- Ville -->
+        <div class="form-group">
+          <label for="city">Ville *</label>
+          <input
+            id="city"
+            type="text"
+            placeholder="Ex : Paris"
+            [formField]="personForm.city"
+          />
+          @if (personForm.city().touched() &&
+               personForm.city().invalid()) {
+            <small class="error-text">
+              @for (error of personForm.city().errors(); track $index) {
+                {{ error.message }}
+              }
+            </small>
+          }
+        </div>
+
+      </div>
+
+      <!-- Erreur serveur -->
+      @if (error()) {
+        <div class="alert alert-error">
+          {{ error() }}
+        </div>
+      }
+
+      <!-- Succès -->
+      @if (created()) {
+        <div class="alert alert-success">
+          <strong>Contact ajouté avec succès !</strong>
+        </div>
+      }
+
+      <div class="form-actions">
+        <button type="submit" class="submit-btn">
+          <span>＋</span>
+          Ajouter le contact
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
