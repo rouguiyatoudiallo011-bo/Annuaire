@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { PersonDetail } from './person-detail/person-detail';
 import { NotFound } from './not-found/not-found';
 import {PeopleList} from'../app/people-list/people-list';
+import {Favoris} from '../app/favoris/favoris';
 
 export const routes: Routes = [
      {
@@ -14,6 +15,10 @@ export const routes: Routes = [
  {
     path: 'annuaire', component: PeopleList
   },
+    {
+    path: 'favoris', component: Favoris
+  },
+
      { path: '**', component: NotFound }
 
 ];

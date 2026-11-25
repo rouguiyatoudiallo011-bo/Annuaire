@@ -1,35 +1,24 @@
+@for(person of people(); track $index) {
+  <div class="cardPerson">
 
-<section>
-      @if (service.loading()) {
-  <p>Chargement du catalogue…</p>
+    <a [routerLink]="['/personnes', person.id.value]">
+      <img [src]="person.picture.large" class="imagePerson">
+
+      <div class="infoPerson">
+        <h3>
+          {{person.name.title}}
+          {{person.name.first}}
+          {{person.name.last}}
+        </h3>
+        <p>{{person.location.city}}</p>
+      </div>
+    </a>
+
+    <button
+      class="star"
+    (click)="toggleFavorite(person)">
+      {{ isFavorite(person.id.value) ? '★' : '☆' }}
+    </button>
+
+  </div>
 }
-@else if (people()){ <div  class="containerPeople"  >
-    
-      @for(person of people(); track $index){
-        <a [routerLink]="['/personnes', person.id.value]">
-        <div class="cardPerson">
-          <img [src]="person.picture.large" class="imagePerson">
-
-          <div class="infoPerson">
-            <h3>
-              {{person.name.title}}
-              {{person.name.first}}
-              {{person.name.last}}
-            </h3>
-
-            <p>{{person.location.city}}</p>
-          </div>
-        </div>
-           </a>
-      }
-   
-   
-       </div>
-       
-    }
-  @else {
-    <p>L'annuaire est indisponible. Réessaie dans un instant.</p>
-  }
- 
-</section>
-

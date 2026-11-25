@@ -1,11 +1,9 @@
 import { Component, inject, input, signal, effect } from '@angular/core';
 import { Person } from '../models/types';
 import { PeopleApi } from '../people-api';
-import { RouterLink } from '@angular/router';
-
 
 @Component({
-  imports: [RouterLink],
+  imports: [],
   selector: 'app-person-detail',
   styleUrl: './person-detail.css',
   templateUrl: './person-detail.html',

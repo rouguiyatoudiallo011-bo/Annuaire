@@ -1,8 +1,10 @@
 import { Component, signal, inject } from '@angular/core';
 import { PeopleApi } from '../people-api';
+import {ServicePerson} from'../service-person';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-header',
   styleUrl: './header.css',
   templateUrl: './header.html',
@@ -10,6 +12,7 @@ import { PeopleApi } from '../people-api';
 export class Header {
   numberPerson = signal<number>(0);
   service = inject(PeopleApi);
+  servicePerson = inject(ServicePerson);
 
  async ngOnInit(): Promise<void> {
     const resultpeople = await this.service.getAll();

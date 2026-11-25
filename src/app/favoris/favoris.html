@@ -1,0 +1,26 @@
+<section>
+  <h2>Mes favoris</h2>
+
+  <div class="containerPeople">
+    @for (person of servicePerson.peoplefavoris(); track person.id.value) {
+      <a [routerLink]="['/personnes', person.id.value]">
+        <div class="cardPerson">
+          <img [src]="person.picture.large" class="imagePerson">
+
+          <div class="infoPerson">
+            <h3>
+              {{ person.name.title }}
+              {{ person.name.first }}
+              {{ person.name.last }}
+            </h3>
+
+            <p>{{ person.location.city }}</p>
+          </div>
+        </div>
+      </a>
+    }
+    @empty {
+      <p>Aucun favori pour le moment.</p>
+    }
+  </div>
+</section>
